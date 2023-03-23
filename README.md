@@ -7,7 +7,11 @@ Are the number of integration sites found within or near interesting genomic are
 
 A heatmap object is produced as an output.
 
+---
 
+<img src="docs/testset_heatmap.png" alt="Example of heatmap" width=1000>
+
+---
 
 
 `IntegrationFeatureHeatmap` provides all objects generated during processing, allowing for heatmaps and ROC data to be easily accessed, modified, and used in downstream applications.
