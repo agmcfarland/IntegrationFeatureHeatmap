@@ -149,7 +149,7 @@ If the ROC is 1, then counts in the experimental integration site dataframe are 
 head(IntegrationFeatureHeatmap::format_hot_roc_result(hot_roc_result))
 ```
 
-## make a heatmap of the ROC data
+## Make a heatmap of the ROC data
 
 Convert the hotROCs output into a heatmap. P-values and ROC gradients are displayed. 
 
@@ -169,7 +169,7 @@ The heatmap object can be further edited to fit whatever data needs are requird.
 
 `IntegrationFeatureHeatmap` takes three inputs:
 
-1. Fasta file of the genome being tested.
+1. Fasta file of the genome to use for random sampling.
 
 2. A list of genomic features of file type `.RData` or `.rds`.
 
