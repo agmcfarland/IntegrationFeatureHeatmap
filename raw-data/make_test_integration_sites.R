@@ -54,4 +54,4 @@ test_positive <- test_positive%>%
   select(-c(seqnames, start, end, width, strand, mid))
 # IntegrationFeatureHeatmap::format_aavenger_sites(test_positive)
 
-write.csv(test_positive, file.path('/data/IntegrationFeatureHeatmap/data'), row.names = FALSE)
+write.csv(test_positive, file.path('/data/IntegrationFeatureHeatmap/data/testset.csv'), row.names = FALSE)
