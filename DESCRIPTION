@@ -2,7 +2,7 @@ Package: IntegrationFeatureHeatmap
 Title: Make a heatmap showing the ROC area of integration sites in a genomic feature.
 Version: 0.0.1.0
 Authors@R: 
-    person("McFarland", "Alexander", , "alex.952gmail.com", role = c("aut", "cre"),
+    person("McFarland", "Alexander", "alex.952gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1803-3623"))
 Description: IntegrationFeatureHeatmap looks at the number of integration sites within biological features, such as DNase sensitive regions, epigenetic markers, or transcription units, and compares it to random model or an experimental control. IntegrationFeatureHeatmap outputs a heatmap showing the ROC area and significance value for each experiment and biological feature combination.
 License: MIT + file LICENSE

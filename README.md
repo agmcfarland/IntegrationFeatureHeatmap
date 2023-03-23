@@ -5,13 +5,13 @@ Are the number of integration sites found within or near interesting genomic are
 
 `IntegrationFeatureHeatmap` looks at the number of integration sites within biological features, such as DNase sensitive regions, epigenetic markers, or transcription units, and compares it to random model or an experimental control.
 
-`IntegrationFeatureHeatmap` outputs a heatmap showing the ROC area and significance value for each experiment and biological feature combination.
+The output produced is a 
 
 
 # Install
 
 ```
-devtools::install_github('')
+devtools::install_github('https://github.com/agmcfarland/IntegrationFeatureHeatmap')
 ```
 
 
@@ -23,7 +23,7 @@ devtools::install_github('')
 
 ## Fasta file
 
-Fasta file can be either single or multisequence. Each defline has a single word name. Allowed bases are A, C, T, G, and N.
+Fasta file can have single or multiple sequences. Each defline has a unique word, like chr1. Allowed bases are A, C, T, G, and N.
 
 ```
 >chr1
@@ -54,16 +54,19 @@ GRanges object with 212515 ranges and 0 metadata columns:
 
 ```
 
+**Important**
+
+If using an RData file, the `GenomicRanges` object **must** be named epigenData
+
 ## Integration sites
-
-
 
 
 Here seqnames 
 
-**Important**
 
-If using an RData file, the `GenomicRanges` object **must** be named epigenData
+# Tips
+
+
 
 
 
