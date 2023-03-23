@@ -26,30 +26,62 @@ devtools::install_github('https://github.com/agmcfarland/IntegrationFeatureHeatm
 
 # Example
 
-```r
+
+## Load libraries and paths
+
+Make sure you have downloaded all data from ```/data/IntegrationFeatureHeatmap/data``` to a local directory
+
+```R
+# clear workspace
 rm(list=ls())
 options(scipen = 999)
 
-devtools::install_github('agmcfarland/IntegrationFeatureHeatmap')
+# load libraries
 library(IntegrationFeatureHeatmap)
 library(dplyr)
-library(stringr)
 
 # download the provided data from agmcfarland/IntegrationFeatureHeatmap/data to a local directory
 provided_data <- '/data/IntegrationFeatureHeatmap/data'
 
+```
+
+## Format integration site table
+
+Read in an dataframe of integration sites in the format outputted by AAVengeR.
+
+```R
+# read in testset.csv, which contains an example AAVengeR integration sites dataframe
 aavenger_sites_raw <- read.csv(file.path(provided_data,'testset.csv'))
 
-# test sites -- not using `format_aavenger_sites()` since this is an older AAVengeR output missing a few columns.
+print(head(aavenger_sites_raw))
+
+# format dataframe object to be useable by IntegrationFeatureHeatmap
 aavenger_sites <- format_aavenger_sites(
   aavenger_sites_df = aavenger_sites_raw
 )
-  
-# fasta sequence to sample from. Going to pretend we ran the hashed code below and instead read in a pre-prepared file.
-# genome_fasta <- ShortRead::readFasta(file.path('/home/ubuntu/temp_data/data','hg38.fa.gz'))
-# chromosome_lengths <- IntegrationFeatureHeatmap::fasta_to_chromosome_lengths(genome_fasta)
-chromosome_lengths <- read.csv(file.path('/data/IntegrationFeatureHeatmap/data/testset_chromosome_lengths.csv'))
 
+print(head(aavenger_sites))
+```
+
+## Get chromosome lengths
+
+Read in the genomic fasta file that will be used for random sampling.
+
+Normally the genomic fasta would be read in using ShortRead::readFasta(). However, this uses a lot of space. A pre-made chromosome_lengths file is used here for convenience. The hashed out examples show how the genomic fasta would be read in and converted to a chromosome_lengths dataframe.
+
+```R
+# genome_fasta <- ShortRead::readFasta(file.path('/home/ubuntu/temp_data/data','hg38.fa.gz')) # example
+# chromosome_lengths <- IntegrationFeatureHeatmap::fasta_to_chromosome_lengths(genome_fasta) # example
+chromosome_lengths <- read.csv(file.path(provided_data,'testset_chromosome_lengths.csv'))
+
+print(head(chromosome_lengths))
+```
+
+## Make random-matched dataframes
+
+Each unique `heatmap_group` in `aavenger_sites` is its own dataframe. Each unique `heatmap_group` dataframe will have a random match dataframe with `match_row_number_modifier` times the rows, each with a randomly sampled position from the provided genomic fasta in `chromosome_lengths`.
+
+```R
 # generate random-matched dataframes
 random_match_df <- IntegrationFeatureHeatmap::aavenger_sites_random_match(
   aavenger_sites = aavenger_sites,
@@ -57,15 +89,37 @@ random_match_df <- IntegrationFeatureHeatmap::aavenger_sites_random_match(
   random_seed_value = 10,
   match_row_number_modifier = 3
   )
+  
+print(head(random_match_df))
+```
 
+## Combine original integration sites and random match integration sites
+
+Make a long dataframe that is the original aavenger_sites on top of the random_match_df sites.
+
+```R
 # combine random match and experimental dataframes
 combined_df <- rbind(aavenger_sites, random_match_df)
+```
 
-# count the number of insertion sites and match sites. There should be 3 times more match sites than integration sites
+## Check that each integration dataframe has the correct number of random matches
+
+Number of random matches should equal the size of the integration dataframe * `match_row_number_modifier`.
+
+```R
+# count the number of insertion sites and match sites
 print(combined_df%>%group_by(heatmap_group, type)%>%summarize(count = n ()))
+```
 
+## Count overlaps for integration sites and genomic features over multiple genomic windows
+
+Each integration site is checked if it overlaps a genomic feature, with the genomic feature being expanded by different genomic windows.
+
+```R
 # get the provided RData and rds feature files into a list
-feature_files_to_process <- list.files('/data/IntegrationFeatureHeatmap/data', pattern = "\\.(rds|RData)$", full.names = TRUE)
+feature_files_to_process <- list.files(provided_data, pattern = "\\.(rds|RData)$", full.names = TRUE)
+
+print(feature_files_to_process)
 
 # test each integration site for overlap in each feature at each given overlap 
 combined_overlap_test_results_genomic_ranges <- IntegrationFeatureHeatmap::test_for_overlaps(
@@ -74,19 +128,31 @@ combined_overlap_test_results_genomic_ranges <- IntegrationFeatureHeatmap::test_
   overlap_ranges_to_test = c(1000, 10000, 1000000)
 )
 
-# use hotROCs to calculate the ROC for each integration site group
-hot_roc_result <- IntegrationFeatureHeatmap::hotroc_compare_insertion_to_match(
-  matched_overlap_df = combined_overlap_test_results_genomic_ranges
-  )
+print(head(combined_overlap_test_results_genomic_ranges))
+```
 
-# make a heatmap of the ROC data
-p1 <- roc_to_heatmap(
+## Inspect the hotROCs output
+
+If the ROC is 1, then counts in the experimental integration site dataframe are greater than the random match. If the ROC is 0, then counts are lower than the random match. If the ROC is 0.5, then counts are equally likely for both experimental integration site dataframe and its random match. [See here for code](https://github.com/BushmanLab/hotROCs) and [here for more details](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5363318/)
+
+```R
+head(IntegrationFeatureHeatmap::format_hot_roc_result(hot_roc_result))
+```
+
+## make a heatmap of the ROC data
+
+Convert the hotROCs output into a heatmap. P-values and ROC gradients are displayed. 
+
+```R
+p1 <- IntegrationFeatureHeatmap::roc_to_heatmap(
   hot_roc_result = hot_roc_result
 )
-
 print(p1)
 ```
 
+## Next steps
+
+The heatmap object can be further edited to fit whatever data needs are requird. The ROC areas and p-values are easily accessible using ```IntegrationFeatureHeatmap::format_hot_roc_result()```.
 
 
 # Data formats
@@ -145,12 +211,3 @@ If using an RData file, the `GenomicRanges` object **must** be named `epigenData
 5 testset subject1 sample1      hg38 chr16-20894346.1   10           10       10    NA    random.fasta        10                10         10          ACTGACTG               10
 6 testset subject1 sample1      hg38  chrX-27657690.1   10           10       10    NA    random.fasta        10                10         10          ACTGACTG               10
 ```
-
-# Tips
-
-
-
-
-
-
-# Citation
