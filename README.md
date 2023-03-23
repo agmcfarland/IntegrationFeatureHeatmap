@@ -29,7 +29,7 @@ devtools::install_github('https://github.com/agmcfarland/IntegrationFeatureHeatm
 
 ## Load libraries and paths
 
-Make sure you have downloaded all data from ```/data/IntegrationFeatureHeatmap/data``` to a local directory
+Make sure you have downloaded all data from ```https://github.com/agmcfarland/IntegrationFeatureHeatmap/data``` to a local directory
 
 ```R
 # clear workspace
