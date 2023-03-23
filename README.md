@@ -37,7 +37,7 @@ TTGCTGCTCGCTTTCGCTATATCATAAATCGATCGACTACGACTAGCTACTACGACTATATCACTAGCTAGCTAGTGTAG
 `IntegrationFeatureHeatmap` takes as input either an RData or RDS file containing a `GenomicRanges` object formatted like below:
 
 ```
-GRanges object with 212515 ranges and 0 metadata columns:
+GRanges object with 5 ranges and 0 metadata columns:
                          seqnames            ranges strand
                             <Rle>         <IRanges>  <Rle>
        [1]                   chr1 89128920-89129070      *
@@ -45,18 +45,11 @@ GRanges object with 212515 ranges and 0 metadata columns:
        [3]                   chr1 13500340-13500490      *
        [4]                   chr1 14811020-14811170      *
        [5]                   chr1 30801860-30802010      *
-       ...                    ...               ...    ...
-  [212511] chr22_KI270736v1_ran..     180220-180370      *
-  [212512] chr22_KI270736v1_ran..     180440-180590      *
-  [212513] chr22_KI270736v1_ran..     181100-181250      *
-  [212514] chr22_KI270736v1_ran..     181580-181730      *
-  [212515] chr22_KI270737v1_ran..       70260-70410      *
-
 ```
 
 **Important**
 
-If using an RData file, the `GenomicRanges` object **must** be named epigenData
+If using an RData file, the `GenomicRanges` object **must** be named `epigenData`
 
 ## Integration sites
 
