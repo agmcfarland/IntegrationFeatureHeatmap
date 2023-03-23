@@ -131,6 +131,16 @@ combined_overlap_test_results_genomic_ranges <- IntegrationFeatureHeatmap::test_
 print(head(combined_overlap_test_results_genomic_ranges))
 ```
 
+## Use hotROCs to calculate the ROC area for each integration site group
+
+`IntegrationFeatureHeatmap` calls on `hotROCs` to calculate the ROC area.
+
+```R
+hot_roc_result <- IntegrationFeatureHeatmap::hotroc_compare_insertion_to_match(
+  matched_overlap_df = combined_overlap_test_results_genomic_ranges
+  )
+```
+
 ## Inspect the hotROCs output
 
 If the ROC is 1, then counts in the experimental integration site dataframe are greater than the random match. If the ROC is 0, then counts are lower than the random match. If the ROC is 0.5, then counts are equally likely for both experimental integration site dataframe and its random match. [See here for code](https://github.com/BushmanLab/hotROCs) and [here for more details](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5363318/)
