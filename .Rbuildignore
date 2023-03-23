@@ -1,2 +1,5 @@
 ^IntegrationFeatureHeatmap\.Rproj$
 ^\.Rproj\.user$
+^data$
+^docs$
+^LICENSE\.md$
