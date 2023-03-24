@@ -204,9 +204,7 @@ GRanges object with 5 ranges and 0 metadata columns:
        [5]                   chr1 30801860-30802010      *
 ```
 
-**Important**
-
-If using an RData file, the `GenomicRanges` object **must** be named `epigenData`
+**Important --** If using an RData file, the `GenomicRanges` object **must** be named `epigenData`
 
 ## Integration sites
 
