@@ -224,7 +224,7 @@ If using an RData file, the `GenomicRanges` object **must** be named `epigenData
 
 # Dependencies
 
-```md
+
 |package      |version|
 |-------------|-------|
 |GenomicRanges|1.46.1 |
@@ -235,6 +235,6 @@ If using an RData file, the `GenomicRanges` object **must** be named `epigenData
 |tibble       |3.1.8  |
 |tidyr        |1.2.0  |
 |Biostrings   |2.62.0 |
-```
+
 
 
