@@ -163,7 +163,7 @@ print(p1)
 
 ## Next steps
 
-The heatmap object can be further edited to fit whatever data needs are requird. The ROC areas and p-values are easily accessible using ```IntegrationFeatureHeatmap::format_hot_roc_result()```.
+The heatmap object can be further edited to fit whatever data needs are required. The ROC areas and p-values are easily accessible using the function ```IntegrationFeatureHeatmap::format_hot_roc_result()```.
 
 
 # Data formats
