@@ -133,7 +133,7 @@ print(head(combined_overlap_test_results_genomic_ranges))
 
 ## Use hotROCs to calculate the ROC area for each integration site group
 
-`IntegrationFeatureHeatmap` calls on `hotROCs` to calculate the ROC area.
+**IntegrationFeatureHeatmap** calls on `hotROCs` to calculate the ROC area.
 
 ```R
 hot_roc_result <- IntegrationFeatureHeatmap::hotroc_compare_insertion_to_match(
