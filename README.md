@@ -221,3 +221,20 @@ If using an RData file, the `GenomicRanges` object **must** be named `epigenData
 5 testset subject1 sample1      hg38 chr16-20894346.1   10           10       10    NA    random.fasta        10                10         10          ACTGACTG               10
 6 testset subject1 sample1      hg38  chrX-27657690.1   10           10       10    NA    random.fasta        10                10         10          ACTGACTG               10
 ```
+
+# Dependencies
+
+```md
+|package      |version|
+|-------------|-------|
+|GenomicRanges|1.46.1 |
+|ShortRead    |1.52.0 |
+|ggplot2      |3.3.6  |
+|hotROCs      |0.99.5 |
+|stringr      |1.4.0  |
+|tibble       |3.1.8  |
+|tidyr        |1.2.0  |
+|Biostrings   |2.62.0 |
+```
+
+
