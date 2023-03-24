@@ -20,7 +20,7 @@ A heatmap object is produced as an output.
 # Install
 
 ```r
-devtools::install_github('https://github.com/agmcfarland/IntegrationFeatureHeatmap')
+devtools::install_github('agmcfarland/IntegrationFeatureHeatmap')
 ```
 
 
