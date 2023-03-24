@@ -25,11 +25,11 @@ devtools::install_github('agmcfarland/IntegrationFeatureHeatmap')
 
 # Example
 
-[Please download the provided output located here to follow along.](https://github.com/agmcfarland/IntegrationFeatureHeatmap/tree/main/docs/tutorial.html)
+[Please download a pre-run verison of this example to follow along.](https://github.com/agmcfarland/IntegrationFeatureHeatmap/tree/main/docs/tutorial.html).
 
 ## Load libraries and paths
 
-Make sure you have downloaded all data from ```https://github.com/agmcfarland/IntegrationFeatureHeatmap/data``` to a local directory
+Make sure you have [downloaded all example data](https://github.com/agmcfarland/IntegrationFeatureHeatmap/data) to a local directory.
 
 ```R
 # clear workspace
