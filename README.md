@@ -23,9 +23,9 @@ A heatmap object is produced as an output.
 devtools::install_github('agmcfarland/IntegrationFeatureHeatmap')
 ```
 
-
 # Example
 
+[Please follow along with the provided output located here.](https://github.com/agmcfarland/IntegrationFeatureHeatmap/tree/main/docs/tutorial.html)
 
 ## Load libraries and paths
 
