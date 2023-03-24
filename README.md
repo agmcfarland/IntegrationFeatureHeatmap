@@ -56,7 +56,7 @@ aavenger_sites_raw <- read.csv(file.path(provided_data,'testset.csv'))
 print(head(aavenger_sites_raw))
 
 # format dataframe object to be useable by IntegrationFeatureHeatmap
-aavenger_sites <- format_aavenger_sites(
+aavenger_sites <- IntegrationFeatureHeatmap::format_aavenger_sites(
   aavenger_sites_df = aavenger_sites_raw
 )
 
@@ -108,12 +108,12 @@ Number of random matches should equal the size of the integration dataframe * `m
 
 ```R
 # count the number of insertion sites and match sites
-print(combined_df%>%group_by(heatmap_group, type)%>%summarize(count = n ()))
+print(combined_df%>%group_by(heatmap_group, type)%>%summarize(count = n()))
 ```
 
 ## Count overlaps for integration sites and genomic features over multiple genomic windows
 
-Each integration site is checked if it overlaps a genomic feature, with the genomic feature being expanded by different genomic windows.
+Each integration site is checked if it overlaps a genomic feature, with the genomic feature being expanded by different genomic windows. 
 
 ```R
 # get the provided RData and rds feature files into a list
@@ -159,6 +159,7 @@ p1 <- IntegrationFeatureHeatmap::roc_to_heatmap(
 )
 print(p1)
 ```
+
 
 ## Next steps
 
