@@ -224,6 +224,7 @@ If using an RData file, the `GenomicRanges` object **must** be named `epigenData
 
 # Dependencies
 
+IntegrationFeatureHeatmap was developed using `R version 4.1.3 (2022-03-10)`.
 
 |package      |version|
 |-------------|-------|
