@@ -25,7 +25,7 @@ devtools::install_github('agmcfarland/IntegrationFeatureHeatmap')
 
 # Example
 
-[Please download a pre-run verison of this example to follow along.](https://github.com/agmcfarland/IntegrationFeatureHeatmap/tree/main/docs/tutorial.html).
+[Please download a pre-run verison of this example to follow along.](https://github.com/agmcfarland/IntegrationFeatureHeatmap/tree/main/docs/tutorial.html)
 
 ## Load libraries and paths
 
