@@ -67,7 +67,7 @@ print(head(aavenger_sites))
 
 Read in the genomic fasta file that will be used for random sampling.
 
-Normally the genomic fasta would be read in using ShortRead::readFasta(). However, this uses a lot of space. A pre-made chromosome_lengths file is used here for convenience. The hashed out examples show how the genomic fasta would be read in and converted to a chromosome_lengths dataframe.
+Normally the genomic fasta would be read in using ShortRead::readFasta(). To save disk space for this exercise, a pre-made chromosome_lengths file is provided. The hashed out examples show how the genomic fasta would be read in and converted to a chromosome_lengths dataframe in a typical workflow..
 
 ```R
 # genome_fasta <- ShortRead::readFasta(file.path('/home/ubuntu/temp_data/data','hg38.fa.gz')) # example
