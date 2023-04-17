@@ -174,7 +174,7 @@ The heatmap object can be further edited to fit whatever data needs are required
 
 2. A list of genomic features of file type `.RData` or `.rds`.
 
-3. An `data.frame` of integration sites.
+3. A `data.frame` of integration sites.
 
 Details are provided below. 
 
